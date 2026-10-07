@@ -1,3 +1,9 @@
-const numero1 = Number(prompt("Introduce un numero:"));
-const numero2 = Number(prompt("Introduce otro numero:"));
+const numero = Number(prompt("Introduce un numero:"));
 
+if(numero == 1){
+    console.log("El numero es positivo");
+} else if(numero == -1){
+    console.log("El numero es negativo");
+} else {
+    console.log("El numero es cero");
+}
