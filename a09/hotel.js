@@ -9,10 +9,39 @@ const superior = 90;
 const descuento = 0.10;
 
 
-if(edad < 18){
-    console.log("No puede realizar la reeserva");   
-}else if (tipoHabitacion === "standard"){
-    console.log("El precio de la habitación es: " + standard + "€");
-}else if (tipoHabitacion === "superior"){
-    console.log("El precio de la habitación es: " + superior + "€");
+//Validar que los números sean correctos
+if (isNaN(edad) || edad < 0 || isNaN(noches) || noches <= 0) {
+  console.log("Error: La edad o el número de noches no son válidos.");
+} 
+else if (edad < 18) {
+  console.log("No puede realizar la reserva por ser menor de 18 años.");
+} 
+else if (tipoHabitacion !== "standard" && tipoHabitacion !== "superior") {
+  console.log("Error: Solo se admiten habitaciones 'standard' o 'superior'.");
+} 
+else {
+  let precioNoche = 0;
+  if (tipoHabitacion === "standard") {
+    precioNoche = standard;
+  } else {
+    precioNoche = superior;
+  }
+
+  // Calculamos el precio inicial
+  let precioInicial = precioNoche * noches;
+
+  // Calculamos el descuento 
+  let importeDescuento = 0;
+  if (noches >= 7) {
+    importeDescuento = precioInicial * descuento;
+  }
+
+  // Precio final restando el descuento
+  let precioFinal = precioInicial - importeDescuento;
+
+  //resultado
+  console.log("Reserva a nombre de: " + nombre);
+  console.log("Precio inicial: " + precioInicial.toFixed(2) + "€");
+  console.log("Importe del descuento: " + importeDescuento.toFixed(2) + "€");
+  console.log("Precio final a pagar: " + precioFinal.toFixed(2) + "€");
 }
